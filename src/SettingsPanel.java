@@ -29,14 +29,14 @@ public class SettingsPanel extends JPanel implements ActionListener{
 		
 		this.frame = frame;
 		
-		easy = new JRadioButton("easy ");
+		easy = new JRadioButton("Easy ");
 		easy.setBackground(Color.LIGHT_GRAY);
 		easy.setSize(new Dimension(20,20));
 		easy.addActionListener(this);
-		normal = new JRadioButton("normal ");
+		normal = new JRadioButton("Normal ");
 		normal.setBackground(Color.LIGHT_GRAY);
 		normal.addActionListener(this);
-		hard = new JRadioButton("hard ");
+		hard = new JRadioButton("Hard ");
 		hard.addActionListener(this);
 		hard.setBackground(Color.LIGHT_GRAY);
 		
@@ -44,7 +44,7 @@ public class SettingsPanel extends JPanel implements ActionListener{
 		difficulty.add(easy);
 		difficulty.add(normal);
 		difficulty.add(hard);
-		difficultyLabel = new JLabel("        difficulty selection:");
+		difficultyLabel = new JLabel("        Difficulty selection:");
 		
 		back = new JButton("Back");
 		back.addActionListener(this);
