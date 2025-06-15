@@ -7,11 +7,14 @@ import javax.swing.JMenuItem;
 
 public class MenuBar extends JMenuBar implements ActionListener{
 	MineSweeperFrame thisFrame;
+	// under menu
 	JMenuItem settingsItem;
 	JMenuItem sound;
 	JMenuItem exitItem;
+	// menu
 	JMenu menu;
 	JMenu directions;
+	// under directions
 	JLabel howTo;
 	public MenuBar(MineSweeperFrame frame) {
 		thisFrame = frame;

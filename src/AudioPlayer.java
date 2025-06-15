@@ -15,16 +15,16 @@ public class AudioPlayer{
 	audioStream5 ,audioStream6,audioStream7,audioStream8, audioStream9, audioStream10;
 	private Clip clip1,clip2,clip3,clip4,clip5, clip6,clip7,clip8, clip9, clip10;
 	public AudioPlayer() throws LineUnavailableException, IOException, UnsupportedAudioFileException {
-		file1 = new File("src\\Sounds\\check_field.wav");
-		file2 = new File("src\\Sounds\\create_mine_field.wav");
-		file3 = new File("src\\Sounds\\explosion_1.wav");
+		file1 = new File("src\\Sounds\\check_field.wav"); // clicking field
+		file2 = new File("src\\Sounds\\create_mine_field.wav"); // game start
+		file3 = new File("src\\Sounds\\explosion_1.wav"); // losing
 		file4 = new File("src\\Sounds\\explosion_2.wav");
 		file5 = new File("src\\Sounds\\explosion_3.wav");
-		file6 = new File("src\\Sounds\\victory.wav");
-		file7 = new File("src\\Sounds\\volume_on.wav");
-		file8 = new File("src\\Sounds\\volume_off.wav");
-		file9 = new File("src\\Sounds\\reset.wav");
-		file10 = new File("src\\Sounds\\plant_flag.wav");
+		file6 = new File("src\\Sounds\\victory.wav"); // winning
+		file7 = new File("src\\Sounds\\volume_on.wav"); // enable audio
+		file8 = new File("src\\Sounds\\volume_off.wav"); // disable audio
+		file9 = new File("src\\Sounds\\reset.wav"); // resetting
+		file10 = new File("src\\Sounds\\plant_flag.wav"); // placing/removing flag
 		audioStream1 = AudioSystem.getAudioInputStream(file1);
 		audioStream2 = AudioSystem.getAudioInputStream(file2);
 		audioStream3 = AudioSystem.getAudioInputStream(file3);
@@ -64,7 +64,7 @@ public class AudioPlayer{
 	public boolean getVolumeOnOrOff() {
 		return volume;
 	}
-	public void playEffect(int i) {
+	public void playEffect(int i) { // play sound effect by index number
 		if (!volume)
 			return;
 		switch(i) {

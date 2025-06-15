@@ -17,21 +17,22 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 
 public class DisplayPanel extends JPanel{
-	private boolean resetEnabled;
+	private boolean resetEnabled; // decides if the reset works
 	ImageIcon smile;
 	ImageIcon dead;
 	ImageIcon cool;
-	private int numOfMines;
+	private int numOfMines; // current mines remaining
 	JLabel minesLeft;
 	JButton reset;
 	JLabel timer;
-	private boolean clockActive;
-	private int time;
+	private boolean clockActive; // whether run is running
+	private int time; // time in seconds
 	Timer clock;
-	TimerTask tick;
+	TimerTask tick; // updates the timer
 	MineSweeperFrame frame;
 	AudioPlayer audioPlayer;
 	public DisplayPanel(int mines, MineSweeperFrame frame) {
+		// audio set up
 		try { audioPlayer = new AudioPlayer(); } 
 		catch (LineUnavailableException e1) {e1.printStackTrace();} 
 		catch (IOException e1) {e1.printStackTrace();} 
@@ -39,15 +40,18 @@ public class DisplayPanel extends JPanel{
 		
 		this.frame = frame;
 		
+		// clock
 		resetEnabled = true;
 		clockActive = true;
 		
 		Border border = BorderFactory.createLineBorder(new Color(255,50,50),2);
 		
+		// smiley photos
 		smile = new ImageIcon("src\\Images\\smile.png");
 		dead = new ImageIcon("src\\Images\\dead.png");
 		cool = new ImageIcon("src\\Images\\cool.png");
 		
+		// UI
 		numOfMines = mines;
 		minesLeft = new JLabel();
 		updateMinesDisplay(mines);
@@ -69,11 +73,12 @@ public class DisplayPanel extends JPanel{
 		timer.setBackground(Color.BLACK);
 		timer.setBorder(border);
 		
-		//start timer
+		// start timer
 		time = 0;
 		setNewClock();
-		
 		clock.scheduleAtFixedRate(tick, 0 ,1000);
+
+		// smiley reset
 		reset = new JButton();
 		reset.setIcon(smile);
 		reset.setPreferredSize(new Dimension(30,30));
@@ -106,15 +111,15 @@ public class DisplayPanel extends JPanel{
 		else if (numOfMines>98)
 			minesLeft.setText(""+numOfMines);
 	}
-	public void addToMinesLeft() {
+	public void addToMinesLeft() { // mine counter for flag removal
 		this.numOfMines++;
 		updateMinesDisplay(this.numOfMines);
 	}
-	public void removeFromMinesLeft() {
+	public void removeFromMinesLeft() { // mine counter for flag placement
 		this.numOfMines--;
 		updateMinesDisplay(this.numOfMines);
 	}
-	private void setTime() {
+	private void setTime() { // time format
 		if (time<10)
 			timer.setText("00"+time);
 		else if (time>9 && time<=99)
